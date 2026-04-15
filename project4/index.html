@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project04 - Aggie Square | Zilin liu</title>
+    
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 引入 Lucide 图标库 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- 引入 GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* 隐藏滚动条让视觉更干净 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fafafa;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4d4d8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1aa;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-zinc-50 text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white overflow-x-hidden">
+
+    <!-- 极简导航 (带返回按钮) -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-zinc-50/90 backdrop-blur-sm border-b border-zinc-200 transition-all duration-300">
+        <div class="flex h-16 text-xs font-bold uppercase tracking-widest max-w-7xl mx-auto px-6">
+            <a href="Portfolio.html" class="flex items-center hover:text-zinc-500 transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Back to Portfolio
+            </a>
+            <div class="flex-1 flex justify-end items-center text-zinc-400">
+                Project04 - Aggie Square
+            </div>
+        </div>
+    </nav>
+
+    <!-- 项目信息页眉 (Project Header) -->
+    <header class="pt-40 pb-20 px-6 max-w-7xl mx-auto border-b border-zinc-200">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
+            <div class="md:col-span-8">
+                <h1 class="gsap-header text-6xl md:text-[7rem] font-medium tracking-tighter leading-[0.9] uppercase mb-8">
+                    Aggie Square<br/><span class="text-zinc-400">Environmental Design</span>
+                </h1>
+                <p class="gsap-header text-lg text-zinc-600 font-medium max-w-2xl leading-relaxed">
+                    This is a collaborative environmental design project developed around Aggie Square, UC Davis’s innovation district in Sacramento. Centered on the relationship between community, public space, and cross-sector collaboration, the project explores how spatial design can support more inclusive community services and stronger connections between the university, local residents, and surrounding urban resources.
+                </p>
+            </div>
+            
+            <div class="md:col-span-4 gsap-header flex flex-col space-y-6 text-xs uppercase tracking-widest font-bold">
+                <div>
+                    <span class="text-zinc-400 block mb-1">Role</span>
+                    <span class="text-zinc-900">Graphic Design & Landscape Sketching</span>
+                </div>
+                <div>
+                    <span class="text-zinc-400 block mb-1">Timeline</span>
+                    <span class="text-zinc-900">3 WEEKS</span>
+                </div>
+                <div>
+                    <span class="text-zinc-400 block mb-1">Tools</span>
+                    <span class="text-zinc-900">Illustrator / Photoshop / Canva</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 核心图片画廊 (Masonry / Editorial Grid Layout) -->
+    <main class="py-24 px-6 max-w-7xl mx-auto">
+        
+        <!-- 全宽封面大图 -->
+        <div class="gsap-img w-full mb-24 group relative overflow-hidden bg-zinc-200">
+            <img src="images/poster.jpg" 
+                 alt="" 
+                 class="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105" />
+            <p class="absolute bottom-4 left-4 text-[10px] uppercase tracking-widest text-white/80 mix-blend-difference">FIG 01. Concept Overview</p>
+        </div>
+
+        <!-- 文字说明插段 -->
+        <div class="gsap-fade max-w-3xl mx-auto mb-24 text-center">
+            <h2 class="text-2xl font-medium mb-6">"Combined with Sacramento’s urban culture and diverse racial and aesthetic identity"</h2>
+            <p class="text-zinc-500 leading-relaxed text-sm">
+                our landscape research revealed that bridges, as one of the city’s most iconic landmarks, could be effectively utilized as a key source of design inspiration
+            </p>
+        </div>
+
+        <!-- 不对称双图网格 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mb-24 items-center">
+            <div class="gsap-img group relative overflow-hidden bg-zinc-200 md:pr-12">
+                <img src="images/bridge1.jpg" 
+                     alt="" 
+                     class="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-400">FIG 02. Data Analysis & Insights</p>
+            </div>
+            
+            <div class="gsap-img group relative overflow-hidden bg-zinc-200 mt-12 md:mt-0">
+                <img src="images/bridge2.jpg" 
+                     alt="" 
+                     class="w-full h-[120%] object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-400">FIG 03. Wireframes</p>
+            </div>
+        </div>
+
+        <!-- 全宽长图 (适合放长图/用户旅程图/架构图) -->
+        <div class="gsap-img w-full mb-24" id="journey-gallery">
+    <h3 class="text-xs font-bold uppercase tracking-widest text-zinc-900 mb-6 border-b border-zinc-200 pb-2">
+        Look Book
+    </h3>
+</div>
+
+    </main>
+
+    <!-- 底部导航 (Next Project) -->
+    <section class="border-t border-zinc-200 py-32 px-6 hover:bg-zinc-950 hover:text-white transition-colors duration-500 group">
+        <a href="#" class="max-w-7xl mx-auto flex flex-col items-center text-center cursor-pointer">
+            <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-400 group-hover:text-zinc-500 mb-8 transition-colors">Next Project</p>
+            <h2 class="text-5xl md:text-[6rem] font-medium tracking-tighter group-hover:scale-105 transition-transform duration-700">
+                流动维度 <i data-lucide="arrow-right" class="inline-block w-12 h-12 md:w-20 md:h-20 ml-4 opacity-0 -translate-x-10 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-700"></i>
+            </h2>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-zinc-50 text-zinc-400 text-center text-[10px] font-bold uppercase tracking-widest border-t border-zinc-200">
+        © <span id="current-year"></span> Zilin Liu.
+    </footer>
+
+    <script>
+        // 初始化图标
+        lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // GSAP 动画逻辑
+        document.addEventListener('DOMContentLoaded', () => {
+            // 自动生成 Page_02 到 Page_43
+        const gallery = document.getElementById('journey-gallery');
+        if (gallery) {
+            for (let i = 1; i <= 41; i++) {
+                const block = document.createElement('div');
+                block.className = 'group relative overflow-hidden bg-zinc-200 mb-6';
+
+                const img = document.createElement('img');
+                img.src = `images/project04image/project0311_Page_${String(i).padStart(2, '0')}.jpg`;
+                img.alt = `User Journey Map Page ${i}`;
+                img.className = 'w-full h-auto object-cover  transition-all duration-1000 group-hover:scale-[1.02]';
+
+                block.appendChild(img);
+                gallery.appendChild(block);
+            }
+        }
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 1. 页眉文字进场动画
+            gsap.from(".gsap-header", { 
+                y: 50, 
+                opacity: 0, 
+                duration: 1.2, 
+                stagger: 0.1, 
+                ease: "power3.out", 
+                delay: 0.2 
+            });
+
+            // 2. 图片滚动视差与浮现动画
+            gsap.utils.toArray('.gsap-img').forEach(imgContainer => {
+                // 图片容器的淡入与上浮
+                gsap.fromTo(imgContainer, 
+                    { y: 60, opacity: 0 },
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        duration: 1.5, 
+                        ease: "expo.out", 
+                        scrollTrigger: { 
+                            trigger: imgContainer, 
+                            start: "top 85%" 
+                        } 
+                    }
+                );
+
+                // 内部图片轻微的视差效果 (可选，增加高级感)
+                const img = imgContainer.querySelector('img');
+                if(img) {
+                    gsap.to(img, {
+                        yPercent: 10, // 图片向下轻微移动
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: imgContainer,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true
+                        }
+                    });
+                }
+            });
+
+            // 3. 文本段落浮现
+            gsap.utils.toArray('.gsap-fade').forEach(text => {
+                gsap.fromTo(text, 
+                    { y: 30, opacity: 0 },
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        duration: 1, 
+                        ease: "power2.out", 
+                        scrollTrigger: { 
+                            trigger: text, 
+                            start: "top 85%" 
+                        } 
+                    }
+                );
+            });
+        });
+    </script>
+</body>
+</html>

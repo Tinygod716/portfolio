@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zilin Liu - Design Portfolio</title>
+    
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 自定义配置 Tailwind，如果你有特殊颜色或配置可以写在这里 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 引入 Lucide 图标库 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- 自定义 CSS 动画和 3D 透视 -->
+    <style>
+        .perspective-2500 { perspective: 2500px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        
+        @keyframes rotate { 
+            from { transform: rotateY(0deg); } 
+            to { transform: rotateY(360deg); } 
+        }
+        
+        .animate-slow-rotate { 
+            animation: rotate 35s linear infinite; 
+        }
+        
+        .animate-slow-rotate:hover { 
+            animation-play-state: paused; 
+        }
+
+        /* 隐藏滚动条让视觉更干净 (可选) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fafafa;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4d4d8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1aa;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-zinc-50 text-zinc-900 font-sans selection:bg-zinc-900 selection:text-white overflow-x-hidden">
+
+    <!-- 极简网格导航 -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-transparent transition-all duration-300">
+        <div class="flex h-16 text-xs font-bold uppercase tracking-widest">
+            <div class="w-1/3 md:w-1/4 flex items-center justify-center border-r border-transparent nav-border hover:bg-zinc-100 cursor-pointer transition-colors" onclick="window.scrollTo(0,0)">
+                Zilin Liu
+            </div>
+            <div class="flex-1 flex justify-end">
+                <a href="#works" class="flex items-center px-8 border-transparent nav-border hover:bg-zinc-100 transition-colors">Works</a>
+                <a href="#about" class="flex items-center px-8 border-transparent nav-border border-l hover:bg-zinc-100 transition-colors">About</a>
+                <a href="#contact" class="flex items-center px-8 border-transparent nav-border border-l hover:bg-zinc-100 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Editorial Style) -->
+    <section class="pt-32 pb-20 px-6 min-h-[90vh] flex flex-col justify-between max-w-7xl mx-auto">
+        <div class="mt-20">
+            <div class="overflow-hidden mb-4">
+                <p class="hero-text text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-500">Portfolio 2024—2025</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+                <div class="md:col-span-8 overflow-hidden">
+                    <h1 class="hero-text text-6xl md:text-[8rem] font-medium tracking-tighter leading-[0.85] uppercase">
+                        Interactive<br/>Designer<span class="text-zinc-400">.</span>
+                    </h1>
+                </div>
+                <div class="md:col-span-4 pb-4 overflow-hidden">
+                    <p class="hero-text text-sm leading-relaxed text-zinc-600 font-medium border-l border-zinc-300 pl-6">
+                        致力于通过计算设计探索技术与人类情感的边界。目前正准备申请 2025 年秋季研究生项目，专注于人机交互 (HCI) 与可持续系统研究。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-line w-full h-[1px] bg-zinc-200 mt-20 mb-8"></div>
+        
+        <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+            <span class="hero-text flex items-center"><i data-lucide="arrow-down" class="w-3 h-3 mr-2 animate-bounce"></i> Scroll to explore</span>
+            <span class="hero-text text-right">刘子麟 <br/> BASED IN CHINA</span>
+        </div>
+    </section>
+
+    <!-- 3D Works Section (Dark Mode for contrast) -->
+    <section id="works" class="relative bg-zinc-950 text-white overflow-hidden py-32">
+        <!-- 背景网格纹理 -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row justify-between items-end mb-24 border-b border-zinc-800 pb-12">
+            <h2 class="reveal text-5xl md:text-7xl font-medium tracking-tighter">Selected<br/>Works<span class="text-zinc-500">.</span></h2>
+            <p class="reveal text-[10px] uppercase tracking-[0.3em] text-zinc-400 mt-6 md:mt-0 max-w-xs md:text-right">
+                A curation of spatial computing, interaction design, and physical prototypes.
+            </p>
+        </div>
+
+        <!-- 3D Stage Container -->
+        <div class="carousel-stage w-full h-[600px] flex items-center justify-center perspective-[2500px] mt-10">
+            <div class="relative w-full h-full flex items-center justify-center transition-transform duration-1000" style="transform: rotateX(-12deg) rotateZ(-12deg)">
+                <div class="relative w-[240px] h-[340px] preserve-3d animate-slow-rotate group">
+                    
+                    <!-- 项目 1 -->
+                     <a href="project1/index.html" class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50 block" style="transform: rotateY(0deg) translateZ(400px)">
+                    <div class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50" style="transform: rotateY(0deg) translateZ(400px)">
+                        <div class="w-full h-full bg-zinc-900 rounded-none overflow-hidden border border-zinc-800 transition-all duration-500 hover:scale-110 hover:-translate-y-8 group/card hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex flex-col">
+                            <div class="flex-1 overflow-hidden relative">
+                                <img src="images/header.png" />
+                            </div>
+                            <div class="p-5 bg-zinc-950 border-t border-zinc-800 flex flex-col justify-between shrink-0 h-[35%]">
+                                <div>
+                                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-zinc-500 mb-1 block">UI/UX Design</span>
+                                    <h3 class="text-sm font-medium text-zinc-100 truncate">Disaster Recovery App</h3>
+                                </div>
+                                <div class="text-[9px] font-bold uppercase tracking-widest text-zinc-400 opacity-0 group-hover/card:opacity-100 transition-all flex items-center">
+                                    View Project <i data-lucide="arrow-up-right" class="w-3 h-3 ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </a>
+
+                    <!-- 项目 2 -->
+                     <a href="project2/index.html" class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50 block" style="transform: rotateY(0deg) translateZ(400px)">
+                    <div class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50" style="transform: rotateY(60deg) translateZ(400px)">
+                        <div class="w-full h-full bg-zinc-900 rounded-none overflow-hidden border border-zinc-800 transition-all duration-500 hover:scale-110 hover:-translate-y-8 group/card hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex flex-col">
+                            <div class="flex-1 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1478416272538-5f7e51dc5400?q=80&w=800&auto=format&fit=crop" alt="流动维度" class="w-full h-full object-cover grayscale opacity-70 group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" />
+                                <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-md text-white text-[8px] px-2 py-1 uppercase tracking-widest">2023</div>
+                            </div>
+                            <div class="p-5 bg-zinc-950 border-t border-zinc-800 flex flex-col justify-between shrink-0 h-[35%]">
+                                <div>
+                                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-zinc-500 mb-1 block">VR 艺术</span>
+                                    <h3 class="text-sm font-medium text-zinc-100 truncate">流动维度</h3>
+                                </div>
+                                <div class="text-[9px] font-bold uppercase tracking-widest text-zinc-400 opacity-0 group-hover/card:opacity-100 transition-all flex items-center">
+                                    View Project <i data-lucide="arrow-up-right" class="w-3 h-3 ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+
+                    <!-- 项目 3 -->
+                     <a href="project1/index.html" class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50 block" style="transform: rotateY(0deg) translateZ(400px)">
+                    <div class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50" style="transform: rotateY(120deg) translateZ(400px)">
+                        <div class="w-full h-full bg-zinc-900 rounded-none overflow-hidden border border-zinc-800 transition-all duration-500 hover:scale-110 hover:-translate-y-8 group/card hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex flex-col">
+                            <div class="flex-1 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop" alt="智能康复" class="w-full h-full object-cover grayscale opacity-70 group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" />
+                                <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-md text-white text-[8px] px-2 py-1 uppercase tracking-widest">2023</div>
+                            </div>
+                            <div class="p-5 bg-zinc-950 border-t border-zinc-800 flex flex-col justify-between shrink-0 h-[35%]">
+                                <div>
+                                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-zinc-500 mb-1 block">移动应用</span>
+                                    <h3 class="text-sm font-medium text-zinc-100 truncate">智能康复</h3>
+                                </div>
+                                <div class="text-[9px] font-bold uppercase tracking-widest text-zinc-400 opacity-0 group-hover/card:opacity-100 transition-all flex items-center">
+                                    View Project <i data-lucide="arrow-up-right" class="w-3 h-3 ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+
+                    <!-- 项目 4 -->
+                     <a href="project4/index.html" class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50 block" style="transform: rotateY(0deg) translateZ(400px)">
+                    <div class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50" style="transform: rotateY(180deg) translateZ(400px)">
+                        <div class="w-full h-full bg-zinc-900 rounded-none overflow-hidden border border-zinc-800 transition-all duration-500 hover:scale-110 hover:-translate-y-8 group/card hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex flex-col">
+                            <div class="flex-1 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1551288049-bbda38a10ad5?q=80&w=800&auto=format&fit=crop" alt="城市脉动" class="w-full h-full object-cover grayscale opacity-70 group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" />
+                                <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-md text-white text-[8px] px-2 py-1 uppercase tracking-widest">2024</div>
+                            </div>
+                            <div class="p-5 bg-zinc-950 border-t border-zinc-800 flex flex-col justify-between shrink-0 h-[35%]">
+                                <div>
+                                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-zinc-500 mb-1 block">数据可视化</span>
+                                    <h3 class="text-sm font-medium text-zinc-100 truncate">城市脉动</h3>
+                                </div>
+                                <div class="text-[9px] font-bold uppercase tracking-widest text-zinc-400 opacity-0 group-hover/card:opacity-100 transition-all flex items-center">
+                                    View Project <i data-lucide="arrow-up-right" class="w-3 h-3 ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+
+                    <!-- 项目 5 -->
+                     <a href="project1/index.html" class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50 block" style="transform: rotateY(0deg) translateZ(400px)">
+                    <div class="absolute inset-0 preserve-3d transition-all duration-700 hover:z-50" style="transform: rotateY(240deg) translateZ(400px)">
+                        <div class="w-full h-full bg-zinc-900 rounded-none overflow-hidden border border-zinc-800 transition-all duration-500 hover:scale-110 hover:-translate-y-8 group/card hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] flex flex-col">
+                            <div class="flex-1 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop" alt="光影重构" class="w-full h-full object-cover grayscale opacity-70 group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-700" />
+                                <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-md text-white text-[8px] px-2 py-1 uppercase tracking-widest">2022</div>
+                            </div>
+                            <div class="p-5 bg-zinc-950 border-t border-zinc-800 flex flex-col justify-between shrink-0 h-[35%]">
+                                <div>
+                                    <span class="text-[8px] font-bold uppercase tracking-[0.2em] text-zinc-500 mb-1 block">空间交互</span>
+                                    <h3 class="text-sm font-medium text-zinc-100 truncate">光影重构</h3>
+                                </div>
+                                <div class="text-[9px] font-bold uppercase tracking-widest text-zinc-400 opacity-0 group-hover/card:opacity-100 transition-all flex items-center">
+                                    View Project <i data-lucide="arrow-up-right" class="w-3 h-3 ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (Academic / CV Style) -->
+    <section id="about" class="py-32 max-w-7xl mx-auto px-6">
+        <h2 class="reveal text-5xl md:text-7xl font-medium tracking-tighter mb-16 border-b border-zinc-200 pb-12">About<span class="text-zinc-400">.</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-20">
+            <div class="md:col-span-4 reveal">
+                <div class="aspect-[3/4] bg-zinc-200 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-zinc-900/5 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                    <!-- 头像占位 -->
+                    <div class="w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-300">
+                        <i data-lucide="user" class="w-16 h-16 mb-4 stroke-1"></i>
+                        <span class="text-xs uppercase tracking-widest">Portrait</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-8 flex flex-col justify-between">
+                <!-- Education Table -->
+                <div class="mb-16">
+                    <div class="flex items-center text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-8 pb-4 border-b border-zinc-200 reveal">
+                        <i data-lucide="graduation-cap" class="mr-3 w-4 h-4"></i> Academic Background
+                    </div>
+                    <div class="space-y-0">
+                        
+                        <div class="reveal group flex flex-col md:flex-row md:items-baseline justify-between py-6 border-b border-zinc-200 hover:bg-white transition-colors px-4 -mx-4">
+                            <div class="md:w-1/3">
+                                <span class="text-xs font-mono text-zinc-400">2021 - 2025</span>
+                                <h4 class="text-lg font-bold mt-1 text-zinc-900">数字媒体艺术 学士</h4>
+                            </div>
+                            <div class="md:w-2/3 md:pl-8 mt-2 md:mt-0">
+                                <p class="text-zinc-900 font-medium mb-1">XX 大学</p>
+                                <p class="text-xs text-zinc-500 leading-relaxed">GPA: 3.9/4.0 | 主修：交互设计基础、用户研究、数字影音制作</p>
+                            </div>
+                        </div>
+
+                        <div class="reveal group flex flex-col md:flex-row md:items-baseline justify-between py-6 border-b border-zinc-200 hover:bg-white transition-colors px-4 -mx-4">
+                            <div class="md:w-1/3">
+                                <span class="text-xs font-mono text-zinc-400">2023</span>
+                                <h4 class="text-lg font-bold mt-1 text-zinc-900">计算设计 交换生</h4>
+                            </div>
+                            <div class="md:w-2/3 md:pl-8 mt-2 md:mt-0">
+                                <p class="text-zinc-900 font-medium mb-1">Global Design Academy</p>
+                                <p class="text-xs text-zinc-500 leading-relaxed">专注于计算设计、生成艺术与物理计算原型开发</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Skills Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 reveal">
+                    <div>
+                        <h3 class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6 pb-2 border-b border-zinc-200">Capabilities</h3>
+                        <ul class="text-xs space-y-3 font-medium text-zinc-700 uppercase tracking-wide">
+                            <li>User Experience Strategy</li>
+                            <li>Rapid Prototyping (Figma)</li>
+                            <li>Creative Coding (React / Three.js)</li>
+                            <li>Physical Computing (Arduino)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6 pb-2 border-b border-zinc-200">Research Focus</h3>
+                        <ul class="text-xs space-y-3 font-medium text-zinc-700 uppercase tracking-wide">
+                            <li>Post-Humanism & Tech</li>
+                            <li>Sustainable Interfaces</li>
+                            <li>Data Tangibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <section id="contact" class="border-t border-zinc-200 pt-32 pb-12 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col items-center text-center mb-32 reveal">
+            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-8">Ready to collaborate?</p>
+            <a href="mailto:zilin.liu@example.edu" class="text-4xl md:text-7xl font-medium tracking-tighter hover:text-zinc-500 transition-colors">
+                mo.chen@example.edu
+            </a>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-widest text-zinc-400 border-t border-zinc-200 pt-8 reveal">
+            <div class="mb-4 md:mb-0">
+                © <span id="current-year"></span> Zilin Liu. All Rights Reserved.
+            </div>
+            <div class="flex space-x-8">
+                <a href="#" class="hover:text-zinc-900 transition-colors flex items-center">
+                    LinkedIn <i data-lucide="arrow-up-right" class="w-2 h-2 ml-1"></i>
+                </a>
+                <a href="#" class="hover:text-zinc-900 transition-colors flex items-center">
+                    Github <i data-lucide="arrow-up-right" class="w-2 h-2 ml-1"></i>
+                </a>
+                <a href="#" class="hover:text-zinc-900 transition-colors flex items-center">
+                    Instagram <i data-lucide="arrow-up-right" class="w-2 h-2 ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 引入 GSAP 相关脚本 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- 交互与动画初始化脚本 -->
+    <script>
+        // 1. 初始化 Lucide 图标
+        lucide.createIcons();
+
+        // 2. 动态设置当前年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 3. 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const navBorders = document.querySelectorAll('.nav-border');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-zinc-50/90', 'backdrop-blur-sm', 'border-b', 'border-zinc-200');
+                navBorders.forEach(el => el.classList.remove('border-transparent'));
+                navBorders.forEach(el => el.classList.add('border-zinc-200'));
+            } else {
+                navbar.classList.remove('bg-zinc-50/90', 'backdrop-blur-sm', 'border-b', 'border-zinc-200');
+                navBorders.forEach(el => el.classList.add('border-transparent'));
+                navBorders.forEach(el => el.classList.remove('border-zinc-200'));
+            }
+        });
+
+        // 4. GSAP 动画
+        document.addEventListener('DOMContentLoaded', (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero 进场动画
+            gsap.from(".hero-text", { 
+                y: 100, 
+                opacity: 0, 
+                duration: 1.5, 
+                stagger: 0.1, 
+                ease: "expo.out", 
+                delay: 0.2 
+            });
+            gsap.from(".hero-line", { 
+                scaleX: 0, 
+                transformOrigin: "left center", 
+                duration: 1.5, 
+                ease: "expo.out", 
+                delay: 0.5 
+            });
+
+            // 滚动浮现
+            gsap.utils.toArray('.reveal').forEach(item => {
+                gsap.fromTo(item, 
+                    { y: 50, opacity: 0 },
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        duration: 1.2, 
+                        ease: "power3.out", 
+                        scrollTrigger: { 
+                            trigger: item, 
+                            start: "top 85%" 
+                        } 
+                    }
+                );
+            });
+
+            // 3D 容器视差
+            gsap.to(".carousel-stage", {
+                y: 50, 
+                ease: "none",
+                scrollTrigger: { 
+                    trigger: "#works", 
+                    start: "top bottom", 
+                    end: "bottom top", 
+                    scrub: true 
+                }
+            });
+        });
+    </script>
+</body>
+</html>
